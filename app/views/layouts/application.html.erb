@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bitlit</title>
+  <title>BITLIT</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<div id="logo">
+  <%= link_to root_path do %>
+    <%= image_tag "logo.png" %>
+  <% end %>
+</div>
 
 <%= yield %>
 
