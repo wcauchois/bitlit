@@ -1,0 +1,25 @@
+<h1>Listing bits</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @bits.each do |bit| %>
+  <tr>
+    <td><%= bit.title %></td>
+    <td><%= bit.content %></td>
+    <td><%= link_to 'Show', bit %></td>
+    <td><%= link_to 'Edit', edit_bit_path(bit) %></td>
+    <td><%= link_to 'Destroy', bit, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Bit', new_bit_path %>
