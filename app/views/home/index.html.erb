@@ -1,2 +1,12 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<p><%= link_to new_bit_path do %>Create a new bit<% end %></p>
+<p><%= link_to bits_path do %>See all bits<% end %></p>
+<p style="font-style: italic;">Showing recent Bits</p>
+<div class="bit_list">
+  <% @recent_bits.each do |bit| %>
+    <div class="bit_list_item">
+    <%= link_to bit_path(bit.id) do %>
+      <span class="title"><%= bit.title %></span>
+    <% end %>
+    </div>
+  <% end %>
+</div>

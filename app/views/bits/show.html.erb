@@ -1,13 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @bit.title %>
+<p class="bit_title_container">
+  <span class="bit_title"><%= @bit.title %></span>
 </p>
 
-<p>
-  <b>Content:</b>
-  <%= @bit.content %>
+<p class="bit_content">
+  <%= @bit.content.gsub(/\n/, "<br>").html_safe %>
 </p>
 
 

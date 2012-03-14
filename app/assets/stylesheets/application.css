@@ -18,4 +18,36 @@ body {
 #logo a:hover {
   border-bottom: 3px solid black;
 }
+a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+a:hover {
+  color: gray;
+}
 
+.bit_list {
+  margin-left: 20px;
+}
+.bit_list_item {
+  margin-bottom: 15px;
+}
+.bit_list_item .title {
+  font-size: 1.5em;
+}
+
+.bit_content {
+  width: 700px;
+  margin-left: 20px;
+}
+.bit_title_container {
+  width: 700px;
+  margin-left: 20px;
+  text-align: center;
+}
+.bit_title {
+  font-size: 2em;
+  font-weight: bold;
+  font-style: italic;
+}
