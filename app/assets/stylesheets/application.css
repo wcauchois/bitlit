@@ -51,3 +51,31 @@ a:hover {
   font-weight: bold;
   font-style: italic;
 }
+
+.comments {
+  margin-left: 20px;
+}
+.comments_title {
+  font-size: 1.3em;
+  font-weight: bold;
+  display: block;
+  margin-top: 90px;
+  color: #FF33CC;
+  cursor: default;
+}
+.comments_title:hover {
+  color: #CC0099;
+}
+.comment {
+  border: 1px solid black;
+  width: 400px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.comment_name {
+  font-style: italic;
+}
+.comment p {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}

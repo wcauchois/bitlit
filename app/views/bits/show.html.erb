@@ -8,6 +8,32 @@
   <%= @bit.content.gsub(/\n/, "<br>").html_safe %>
 </p>
 
+<div class="comments">
+<span class="comments_title">Comments</span><br>
+
+<% @bit.comments.each do |comment| %>
+<div class="comment">
+<span class="comment_name"><%= comment.name %></span>
+<p><%= comment.content.gsub(/\n/, "<br>").html_safe %></p>
+</div>
+<% end %>
+
+<%= form_for(@new_comment) do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content, :rows => 8 %>
+  </div>
+  <%= hidden_field(:bit, :id) %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+</div>
 
 <%= link_to 'Edit', edit_bit_path(@bit) %> |
 <%= link_to 'Back', bits_path %>

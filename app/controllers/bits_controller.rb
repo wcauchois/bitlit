@@ -14,6 +14,8 @@ class BitsController < ApplicationController
   # GET /bits/1.json
   def show
     @bit = Bit.find(params[:id])
+    @new_comment = Comment.new
+    @new_comment.bit = @bit
 
     respond_to do |format|
       format.html # show.html.erb
