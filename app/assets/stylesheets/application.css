@@ -70,7 +70,8 @@ a:hover {
   border: 1px solid black;
   width: 400px;
   padding: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 .comment_name {
   font-style: italic;
@@ -78,4 +79,11 @@ a:hover {
 .comment p {
   margin-top: 3px;
   margin-bottom: 3px;
+}
+.comment_actions {
+  font-size: 0.8em;
+  text-align: right;
+}
+.new_subcomment {
+  font-size: 0.8em;
 }

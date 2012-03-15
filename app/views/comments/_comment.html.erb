@@ -1,0 +1,14 @@
+<% this_width = if defined? width then width else 400 end %>
+
+<div class="comment" id="comment<%= comment.id %>"
+  style="width: <%= this_width %>px;">
+<span class="comment_name"><%= comment.name %></span>
+<p><%= comment.content.gsub(/\n/, "<br>").html_safe %></p>
+<div class="comment_actions">
+<a href="#comment<%= comment.id %>" onclick="reply(<%= comment.id.to_s + ',' + comment.bit_id.to_s %>)">reply</a>
+| <%= link_to comment do %>permalink<% end %>
+</div>
+<% comment.comments.each do |child| %>
+  <%= render :partial => "comments/comment", :locals => { :comment => child, :width => this_width - 20 }  %>
+<% end %>
+</div>

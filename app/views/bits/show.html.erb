@@ -11,11 +11,8 @@
 <div class="comments">
 <span class="comments_title">Comments</span><br>
 
-<% @bit.comments.each do |comment| %>
-<div class="comment">
-<span class="comment_name"><%= comment.name %></span>
-<p><%= comment.content.gsub(/\n/, "<br>").html_safe %></p>
-</div>
+<% @bit.comments.select { |x| x.parent_id.nil? }.each do |comment| %>
+<%= render comment %>
 <% end %>
 
 <%= form_for(@new_comment) do |f| %>
@@ -27,7 +24,7 @@
     <%= f.label :content %><br />
     <%= f.text_area :content, :rows => 8 %>
   </div>
-  <%= hidden_field(:bit, :id) %>
+  <%= f.hidden_field :bit_id, :value => @bit.id %>
   <div class="actions">
     <%= f.submit %>
   </div>
