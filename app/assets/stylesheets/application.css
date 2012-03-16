@@ -88,11 +88,12 @@ a:hover {
   font-weight: bold;
   display: block;
   margin-top: 90px;
-  color: #FF33CC;
+  /*color: #FF33CC;*/
+  color: #AAA;
   cursor: default;
 }
 .comments_title:hover {
-  color: #CC0099;
+  color: #999999;
 }
 .comment {
   border: 1px solid black;
