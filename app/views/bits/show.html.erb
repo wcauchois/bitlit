@@ -5,7 +5,7 @@
 </p>
 <p class="bit_tags">
   <% @bit.tags.each do |tag| %>
-    <span class="tag" ondblclick="removeTag(<%= tag.id %>)"><%= tag.name %></span>
+    <span class="tag" onload="chooseTagColor(this)" ondblclick="removeTag(<%= tag.id %>)"><%= tag.name %></span>
   <% end %>
   <span class="add_tag"><a href="#" title="Add a tag" onclick="addTag(<%= @bit.id %>)">+</a></span>
 </p>

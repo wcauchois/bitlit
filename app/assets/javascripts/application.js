@@ -13,6 +13,17 @@
 //= require jquery
 //= require jquery_ujs
 
+String.prototype.hashCode = function(){
+    var hash = 0;
+    if (this.length == 0) return hash;
+    for (i = 0; i < this.length; i++) {
+        char = this.charCodeAt(i);
+        hash = ((hash<<5)-hash)+char;
+        hash = hash & hash; // Convert to 32bit integer
+    }
+    return hash;
+}
+
 var repliesToggled = {};
 function reply(id, bit_id) {
   if(id in repliesToggled) {
@@ -58,4 +69,18 @@ function addTag(bit_id) {
 function removeTag(tag_id) {
   $('#delete_tag_' + tag_id).submit();
 }
+
+function chooseTagColor(tag) {
+  var h = Math.abs($(tag).text().hashCode());
+  var r = h & 0x000000FF,
+      g = h & 0x0000FF00 << 8,
+      b = h & 0x00FF0000 << 16;
+  tag.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+  tag.style.color = 'rgb(' + (256 - r) + ',' + (256 - g) + ',' + (256 - b) + ')';
+}
+$(document).ready(function () {
+  $('.tag').each(function(i, tag) {
+    chooseTagColor(tag);
+  });
+});
 

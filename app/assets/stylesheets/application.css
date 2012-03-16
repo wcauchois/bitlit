@@ -59,16 +59,18 @@ a:hover {
 }
 .tag, .add_tag {
   border-radius: 5px;
-  background-color: #3333FF;
+  /*background-color: #3333FF;*/
+  background-color: #AAAAAA;
   padding: 4px;
   color: white;
-  cursor: default;
+  cursor: pointer;
 }
 .add_tag a {
   color: white;
 }
 .tag:hover, .add_tag:hover {
-  background-color: #0000FF;
+  /*background-color: #0000FF;*/
+  background-color: #999999;
 }
 .add_tag a:hover {
   cursor: pointer;
