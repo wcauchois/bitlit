@@ -32,19 +32,27 @@ function reply(id, bit_id) {
   }
 }
 
+function validateAddTag() {
+  return $('.add_tag_form input[type="text"]').val().length > 0
+}
 var addTagDisplayed = null;
 function addTag(bit_id) {
   if(addTagDisplayed != null) {
-    addTagDisplayed.submit();
-    addTagDisplayed = null;
-    return false;
+    if(validateAddTag()) {
+      addTagDisplayed.submit();
+      addTagDisplayed = null;
+    }
+  } else {
+    var form = $('<form action="/tags" ' +
+        'method="post" ' +
+        'onsubmit="return validateAddTag()" ' +
+        'class="add_tag_form"></form>');
+    form.append('<input type="text" size="10" name="tag[name]" />');
+    form.append('<input type="hidden" name="tag[bit_id]" value="'+bit_id+'" />');
+    addTagDisplayed = form;
+    $('.add_tag').prepend(form);
+    $('.add_tag_form input[type="text"]').focus();
   }
-  var form = $('<form action="/tags" method="post" class="add_tag_form"></form>');
-  form.append('<input type="text" size="10" name="tag[name]" />');
-  form.append('<input type="hidden" name="tag[bit_id]" value="'+bit_id+'" />');
-  addTagDisplayed = form;
-  $('.add_tag').prepend(form);
-  return false;
 }
 
 function removeTag(tag_id) {
