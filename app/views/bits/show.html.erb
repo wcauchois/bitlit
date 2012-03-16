@@ -5,10 +5,18 @@
 </p>
 <p class="bit_tags">
   <% @bit.tags.each do |tag| %>
-    <span class="tag"><%= tag.name %></span>
+    <span class="tag" ondblclick="removeTag(<%= tag.id %>)"><%= tag.name %></span>
   <% end %>
   <span class="add_tag"><a href="#" title="Add a tag" onclick="addTag(<%= @bit.id %>)">+</a></span>
 </p>
+<% @bit.tags.each do |tag| %>
+  <form style="display: none; visibility: hidden;"
+      action="<%= tag_path(tag.id) %>"
+      method="post"
+      id="delete_tag_<%= tag.id %>">
+    <input type="hidden" name="_method" value="delete" />
+  </form>
+<% end %>
 
 <p class="bit_content">
   <%= @bit.content.gsub(/\n/, "<br>").html_safe %>

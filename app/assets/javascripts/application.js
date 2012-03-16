@@ -47,3 +47,7 @@ function addTag(bit_id) {
   return false;
 }
 
+function removeTag(tag_id) {
+  $('#delete_tag_' + tag_id).submit();
+}
+
