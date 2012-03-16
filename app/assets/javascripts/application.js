@@ -71,10 +71,10 @@ function removeTag(tag_id) {
 }
 
 function chooseTagColor(tag) {
-  var h = Math.abs($(tag).text().hashCode());
-  var r = h & 0x000000FF,
-      g = h & 0x0000FF00 << 8,
-      b = h & 0x00FF0000 << 16;
+  var hsh = Math.abs($(tag).text().hashCode());
+  var r = hsh & 0x000000FF,
+      g = hsh & 0x0000FF00 << 8,
+      b = hsh & 0x00FF0000 << 16;
   tag.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
   tag.style.color = 'rgb(' + (256 - r) + ',' + (256 - g) + ',' + (256 - b) + ')';
 }
