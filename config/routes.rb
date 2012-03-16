@@ -3,6 +3,7 @@ Bitlit::Application.routes.draw do
 
   resources :bits
   resources :comments
+  resources :tags
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

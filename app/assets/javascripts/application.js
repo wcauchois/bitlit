@@ -32,3 +32,18 @@ function reply(id, bit_id) {
   }
 }
 
+var addTagDisplayed = null;
+function addTag(bit_id) {
+  if(addTagDisplayed != null) {
+    addTagDisplayed.submit();
+    addTagDisplayed = null;
+    return false;
+  }
+  var form = $('<form action="/tags" method="post" class="add_tag_form"></form>');
+  form.append('<input type="text" size="10" name="tag[name]" />');
+  form.append('<input type="hidden" name="tag[bit_id]" value="'+bit_id+'" />');
+  addTagDisplayed = form;
+  $('.add_tag').prepend(form);
+  return false;
+}
+

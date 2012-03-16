@@ -51,6 +51,32 @@ a:hover {
   font-weight: bold;
   font-style: italic;
 }
+.bit_tags {
+  margin-top: -10px;
+  text-align: center;
+  width: 700px;
+  margin-left: 20px;
+}
+.tag, .add_tag {
+  border-radius: 5px;
+  background-color: #3333FF;
+  padding: 4px;
+  color: white;
+  cursor: default;
+}
+.add_tag a {
+  color: white;
+}
+.tag:hover, .add_tag:hover {
+  background-color: #0000FF;
+}
+.add_tag a:hover {
+  cursor: pointer;
+  color: white;
+}
+.add_tag_form {
+  display: inline;
+}
 
 .comments {
   margin-left: 20px;
