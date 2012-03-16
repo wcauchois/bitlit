@@ -28,7 +28,7 @@ function reply(id, bit_id) {
     form.append($('<input type="hidden" name="comment[parent_id]" value="'+id+'" />'));
     form.append($('<input name="commit" type="submit" value="Reply" />'));
     repliesToggled[id] = form;
-    $('#comment' + id).append(form);
+    $('#comment' + id + ' > .comment_replyspace').append(form);
   }
 }
 

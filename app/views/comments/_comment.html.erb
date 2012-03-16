@@ -8,6 +8,7 @@
 <a href="#comment<%= comment.id %>" onclick="reply(<%= comment.id.to_s + ',' + comment.bit_id.to_s %>)">reply</a>
 | <%= link_to comment do %>permalink<% end %>
 </div>
+<div class="comment_replyspace"></div>
 <% comment.comments.each do |child| %>
   <%= render :partial => "comments/comment", :locals => { :comment => child, :width => this_width - 20 }  %>
 <% end %>
