@@ -58,7 +58,7 @@ function addTag(bit_id) {
         'method="post" ' +
         'onsubmit="return validateAddTag()" ' +
         'class="add_tag_form"></form>');
-    form.append('<input type="text" size="10" name="tag[name]" />');
+    form.append('<input type="text" size="10" onkeyup="tagTextChanged(this)" name="tag[name]" />');
     form.append('<input type="hidden" name="tag[bit_id]" value="'+bit_id+'" />');
     addTagDisplayed = form;
     $('.add_tag').prepend(form);
@@ -66,21 +66,24 @@ function addTag(bit_id) {
   }
 }
 
+function tagTextChanged(inputElem) {
+  chooseTagColor($(inputElem).val(), $('.add_tag')[0]);
+}
 function removeTag(tag_id) {
   $('#delete_tag_' + tag_id).submit();
 }
 
-function chooseTagColor(tag) {
-  var hsh = Math.abs($(tag).text().hashCode());
+function chooseTagColor(text, target) {
+  var hsh = Math.abs(text.hashCode());
   var r = hsh & 0x000000FF,
       g = hsh & 0x0000FF00 << 8,
       b = hsh & 0x00FF0000 << 16;
-  tag.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
-  tag.style.color = 'rgb(' + (256 - r) + ',' + (256 - g) + ',' + (256 - b) + ')';
+  target.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+  target.style.color = 'rgb(' + (256 - r) + ',' + (256 - g) + ',' + (256 - b) + ')';
 }
 $(document).ready(function () {
   $('.tag').each(function(i, tag) {
-    chooseTagColor(tag);
+    chooseTagColor($(tag).text(), tag);
   });
 });
 
