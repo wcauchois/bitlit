@@ -82,13 +82,20 @@ function removeTag(tag_id) {
   $('#delete_tag_' + tag_id).submit();
 }
 
+/* http://24ways.org/2010/calculating-color-contrast */
+function getContrastYIQ(r, g, b){
+	var yiq = ((r*299)+(g*587)+(b*114))/1000;
+	return (yiq >= 128) ? 'black' : 'white';
+}
+
 function chooseTagColor(text, target) {
   var hsh = Math.abs(text.hashCode());
   var r = Math.abs((hsh & 0xFF000000) >> 24),
       g = Math.abs((hsh & 0x0000FF00) >> 8),
       b = Math.abs((hsh & 0x00FF0000) >> 16);
   target.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
-  target.style.color = 'rgb(' + (256 - r) + ',' + (256 - g) + ',' + (256 - b) + ')';
+  //target.style.color = 'rgb(' + (256 - r) + ',' + (256 - g) + ',' + (256 - b) + ')';
+  target.style.color = getContrastYIQ(r,g,b);
 }
 $(document).ready(function () {
   $('.tag').each(function(i, tag) {
