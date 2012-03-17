@@ -12,16 +12,25 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require sha1
 
 String.prototype.hashCode = function(){
-    var hash = 0;
+    /*var hash = 0;
     if (this.length == 0) return hash;
     for (i = 0; i < this.length; i++) {
         char = this.charCodeAt(i);
         hash = ((hash<<5)-hash)+char;
         hash = hash & hash; // Convert to 32bit integer
     }
-    return hash;
+    return hash;*/
+  var h = 0;
+  var m = 1;
+  var crypt = crypto.sha.str_sha1_b(this);
+  for(var i = 0; i < crypt.length; i++) {
+    h += crypt[i] * m;
+    m *= 256;
+  }
+  return h;
 }
 
 var repliesToggled = {};
@@ -75,9 +84,9 @@ function removeTag(tag_id) {
 
 function chooseTagColor(text, target) {
   var hsh = Math.abs(text.hashCode());
-  var r = hsh & 0x000000FF,
-      g = hsh & 0x0000FF00 << 8,
-      b = hsh & 0x00FF0000 << 16;
+  var r = Math.abs((hsh & 0xFF000000) >> 24),
+      g = Math.abs((hsh & 0x0000FF00) >> 8),
+      b = Math.abs((hsh & 0x00FF0000) >> 16);
   target.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
   target.style.color = 'rgb(' + (256 - r) + ',' + (256 - g) + ',' + (256 - b) + ')';
 }
