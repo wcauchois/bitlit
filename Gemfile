@@ -12,6 +12,8 @@ group :production do
   gem 'pg'
 end
 
+gem 'authlogic'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
