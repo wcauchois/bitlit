@@ -1,10 +1,14 @@
 Bitlit::Application.routes.draw do
   root :to => "home#index"
+  match "/login" => "user_sessions#new"
+  match "/logout" => "user_sessions#destroy"
 
   resources :bits
   resources :comments
   resources :tags
-  resources :user_session
+  resources :user_sessions
+  resources :users
+  resource :account, :controller => "users"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
